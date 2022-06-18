@@ -1,5 +1,6 @@
 "use strict";
 
+
 const endpoint = "https://restcountries.com/v3.1/all";
 const countries = [];
 
