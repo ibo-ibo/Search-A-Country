@@ -1,8 +1,5 @@
 "use strict";
 
-// const endpoint =
-//   "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
-
 const endpoint = "https://restcountries.com/v3.1/all";
 const countries = [];
 
@@ -11,6 +8,7 @@ const suggestions = document.querySelector(".suggestions");
 
 const nameSection = document.querySelector(".name");
 const populationSection = document.querySelector(".population");
+const languageSection = document.querySelector(".language");
 const currencySection = document.querySelector(".currency");
 const regionSection = document.querySelector(".region");
 const flagSection = document.querySelector(".flag");
@@ -63,16 +61,20 @@ const getCountryInfo = async function (e) {
   if (countryName === "Click on to the country name") return;
   const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
   const data = await res.json();
-  nameSection.textContent = data[0].name.common;
-  populationSection.textContent = `Population: ${numberWithCommas(
-    data[0].population
-  )}`;
-  currencySection.textContent = `Currency: ${
-    Object.entries(data[0].currencies)[0][1].name
-  }`;
-  regionSection.textContent = `Region: ${data[0].region}`;
-  capitalSection.textContent = `Capital: ${data[0].capital[0]}`;
-  flagSection.src = `${data[0].flags.png}`;
+  const name = data[0].name.common;
+  const language = Object.entries(data[0].languages)[0][1];
+  const currency = Object.entries(data[0].currencies)[0][1].name;
+  const population = numberWithCommas(data[0].population);
+  const flag = data[0].flags.png;
+  const capital = data[0].capital[0];
+  const region = data[0].region;
+  nameSection.textContent = name;
+  languageSection.textContent = `Language: ${language}`;
+  populationSection.textContent = `Population: ${population}`;
+  currencySection.textContent = `Currency: ${currency}`;
+  regionSection.textContent = `Region: ${region}`;
+  capitalSection.textContent = `Capital: ${capital}`;
+  flagSection.src = `${flag}`;
   infoSection.style.display = "flex";
 };
 
