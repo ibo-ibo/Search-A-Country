@@ -59,6 +59,9 @@ input.search {
   justify-content: space-between;
   cursor: pointer;
 }
+.suggestions li:hover {
+  opacity: 0.8;
+}
 
 span.population {
   font-size: 15px;
@@ -67,13 +70,13 @@ span.population {
 .country-info-modal {
   height: 400px;
   display: none;
-  color: rgb(0, 0, 0);
+  color: #fff;
   flex-direction: column;
   gap: 32px;
   align-items: center;
   justify-content: center;
   width: 30%;
-  background-color: rgb(229, 230, 136);
+  background-color: rgb(145, 52, 52);
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 550;
@@ -81,7 +84,6 @@ span.population {
   top: 61%;
   left: 16.7%;
   transform: translate(-50%, -50%);
-  transition: all 0.5s;
 }
 
 .close {
